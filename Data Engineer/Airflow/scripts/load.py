@@ -10,6 +10,10 @@
 
 from sqlalchemy import create_engine, text
 from pyspark.sql import SparkSession
+from dotenv import load_dotenv
+import os
+
+load_dotenv() #load environment variables from .env file
 
 # ==========================
 # Spark Session
@@ -29,6 +33,14 @@ DB_CONFIG = {
     "user": "neondb_owner",
     "password": "npg_o6fiStThDF2Y",
     "port": "5432"
+}
+
+DB_CONFIG = {
+    "host": os.getenv("host_db"),
+    "database": os.getenv("database"),
+    "user": os.getenv("user_db"),
+    "password": os.getenv("password_db"),
+    "port": os.getenv("port_db")
 }
 
 ENGINE_URL = (
